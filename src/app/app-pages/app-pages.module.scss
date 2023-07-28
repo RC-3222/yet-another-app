@@ -1,0 +1,21 @@
+@use '../../scss/mixins' as *;
+
+.cardGrid {
+    @include card-grid();
+}
+
+.pageControls {
+    display: flex;
+    margin-top: 32px;
+  
+    width: min(320px, 90%);
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+  }
+  
+  .pageNumber {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    //color: $clr--green;
+  }

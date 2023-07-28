@@ -1,0 +1,65 @@
+@use '../scss/variables' as *;
+
+
+.header {
+  padding: 12px 24px;
+  height: 3rem;
+
+  width: 100vw;
+  box-shadow: 0 2px 3px 2px $clr--shadow;
+
+  background-color: $clr--green;
+  color: $clr--white;
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: min(1.5rem, 3.5vw);
+    
+    @media (max-width: 376px) {
+      display: none;
+    }
+  }
+
+  .controls {
+    display: flex;
+    gap: min(1.5rem, 3vw);
+
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 376px) {
+      margin: 0 auto;
+    }
+
+  }
+
+  z-index: 15;
+}
+
+
+
+.main {
+  margin: 0 auto;
+  padding: 54px 0;
+  margin-top: 2rem;
+
+  background-color: #ccc;
+
+  height: 100%;
+  width: min(1240px, 100%);
+  box-shadow: 0 0 3px 2px $clr--shadow;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}

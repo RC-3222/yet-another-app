@@ -1,0 +1,24 @@
+@use '../../../scss/variables' as *;
+@use '../../../scss//mixins' as *;
+
+.button {
+    padding: 0.25rem 0.5rem;
+
+    border-radius: 0.25rem;
+
+    border: none;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: all 0.25s;
+
+    &_primary {
+        @include button-color($clr--green, $clr--white);
+    }
+
+    &_secondary {
+        @include button-color($clr--white, $clr--green);
+    }
+}

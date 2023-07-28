@@ -1,0 +1,46 @@
+@use '../../scss/variables' as *;
+
+.card {
+    border-radius: 12px;
+
+    box-shadow: 0 0 2px 1px $clr--shadow;
+
+    border: none;
+
+    background-color: $clr--white;
+
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 2rem 1rem;
+
+    cursor: pointer;
+
+    #{&}Title {
+        margin: 0;
+        padding: 0.5rem 1.25rem;
+        text-align: center;
+    }
+
+    #{&}Img {
+        position: relative;
+
+        background-color: $clr--white;
+
+        width: min(200px, 80vw);
+        height: min(200px, 80vw);
+
+        top: -42px;
+
+        border-radius: 12px;
+
+        box-shadow: 0 2px 3px 2px $clr--shadow;
+    }
+}
+
+

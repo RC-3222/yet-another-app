@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Button } from '../../components/common/button';
 import { Loader } from '../../components/common/loader';
 import { Card } from '../../components/card';
@@ -13,7 +13,7 @@ export const AppPages = () => {
 
     const [data, setData] = useState(null)
 
-    const loadItems = async () => {
+    const loadItems = useCallback(async () => {
 
         setIsLoading(true);
 
@@ -30,27 +30,28 @@ export const AppPages = () => {
         }
 
         setIsLoading(false)
-    }
+    }, [pageNumber])
 
     useEffect(() => {
         loadItems()
-    }, [pageNumber])
+    }, [loadItems])
 
     return (<>
         {isLoading
             ? <Loader />
             : <div className={styles.cardGrid}>{data?.results?.map((item) => <Card item={item} key={item.id} />)}</div>}
-        <div className={styles.pageControls}>
-            <Button onClick={() => {
-                if (pageNumber <= 1) return;
-                setPageNumber((curr) => curr - 1)
-            }}>Previous</Button>
+        {data?.info?.pages && <div className={styles.pageControls}>
+            {
+                pageNumber > 1 && <Button onClick={() => {
+                    setPageNumber((curr) => curr - 1)
+                }}>Previous</Button>
+            }
             <span className={styles.pageNumber}>{pageNumber}</span>
-            <Button onClick={() => {
-                if (pageNumber >= data?.info?.pages) return;
-                setPageNumber((curr) => curr + 1)
-            }}>Next</Button>
-        </div>
-    </>
-    );
+            {
+                pageNumber < data.info.pages && <Button onClick={() => {
+                    setPageNumber((curr) => curr + 1)
+                }}>Next</Button>
+            }
+        </div>}
+    </>);
 }
